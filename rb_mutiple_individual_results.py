@@ -3,6 +3,7 @@ from transformers import AutoTokenizer, AutoConfig
 import numpy as np
 from scipy.special import softmax
 from dbconnection import texts
+import time
 from preprocess import preprocess
 
 def analyze_sentiment_batch(texts, model, tokenizer):
@@ -12,6 +13,9 @@ def analyze_sentiment_batch(texts, model, tokenizer):
     logits = outputs.logits
     probabilities = softmax(logits.detach().numpy(), axis=1)
     return probabilities
+
+# Start the timer
+start_time = time.time()
 
 MODEL = "cardiffnlp/twitter-roberta-base-sentiment-latest"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
@@ -33,3 +37,8 @@ for i, text in enumerate(texts):
         print(f"{j+1}) {label}: {np.round(float(score), 4)}")
 
 
+end_time = time.time()
+
+# Print the time taken
+elapsed_time = end_time - start_time
+print(f"Time taken: {elapsed_time} seconds")
