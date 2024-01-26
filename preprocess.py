@@ -1,7 +1,9 @@
 import re
 from emoji import extract_emojis
+from stopwords import remove_stopwords
 
 def preprocess(text):
+    text = text.lower()
     # Split the input text into a list of words
     new_text = []
 
@@ -12,14 +14,13 @@ def preprocess(text):
         # Remove URLs (e.g., http://example.com)
         t = re.sub(r'http\S+', '', t)
 
-        # Remove hashtags (e.g., #happy)
-        t = re.sub('#', '', t)  # Remove only the '#' symbol
-
         # Extract emojis using the extract_emojis function
         emojis = extract_emojis(t)
 
         # Remove non-alphanumeric characters excluding emojis
         t = re.sub('[^A-Za-z0-9]+', '', t)
+
+        t = remove_stopwords(t)
 
         # Append the cleaned word to the new_text list
         new_text.append(t + emojis)
