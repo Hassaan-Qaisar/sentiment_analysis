@@ -11,11 +11,11 @@ collection = db['']
 documents = collection.find({"": ""})
 
 # Loading data from first 50 documents
-texts = []
+data = []
 for i, doc in enumerate(documents):
     if i == 50:
         break
-    texts.append(doc['tweet'])
+    data.append(doc['tweet'])
 
 # Print the length of the 'texts' array
-print(f"Number of tweets: {len(texts)}")
+print(f"Number of tweets: {len(data)}")

@@ -8,7 +8,7 @@ nltk.download('punkt')
 def remove_stopwords(text):
     stop_words = set(stopwords.words('english'))
     word_tokens = word_tokenize(text)
-    filtered_text = [word for word in word_tokens if word.isalnum() and word not in stop_words]
+    filtered_text = [word for word in word_tokens if word not in stop_words]
     return ' '.join(filtered_text)
 
 input_text = "Hey @user! Can't believe it's finally #Friday! 🎉 Let's celebrate this amazing day with some great food! #TGIF 😊"

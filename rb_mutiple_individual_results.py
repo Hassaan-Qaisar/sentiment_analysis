@@ -2,7 +2,7 @@ from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer, AutoConfig
 import numpy as np
 from scipy.special import softmax
-from dbconnection import texts
+from dbconnection import data
 import time
 from preprocess import preprocess
 
@@ -22,10 +22,10 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL)
 config = AutoConfig.from_pretrained(MODEL)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
-text = texts
+texts = data
 
 # Analyze sentiment for the batch of texts
-probabilities_batch = analyze_sentiment_batch(text, model, tokenizer)
+probabilities_batch = analyze_sentiment_batch(texts, model, tokenizer)
 
 # Print cumulative results
 for i, text in enumerate(texts):
