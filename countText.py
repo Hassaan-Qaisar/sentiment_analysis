@@ -8,6 +8,12 @@ from dbconnection import data
 from preprocess import preprocess
 import time
 
+'''
+Description:
+This script utilizes the RoBERTa base model for sentiment analysis to categorize a batch of texts into positive,
+negative, and neutral sentiments. It counts the number of texts falling into each sentiment category and prints
+the results.
+'''
 
 def analyze_sentiment_batch(texts, model, tokenizer):
     preprocessed_texts = [preprocess(text) for text in texts]
