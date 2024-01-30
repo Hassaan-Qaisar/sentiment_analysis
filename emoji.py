@@ -1,6 +1,7 @@
 import re
 
 def extract_emojis(text):
+    # Define the regex pattern to match emojis
     emoji_pattern = re.compile("["
                                u"\U0001F600-\U0001F64F"  # Emoticons
                                u"\U0001F300-\U0001F5FF"  # Symbols & pictographs
@@ -14,4 +15,20 @@ def extract_emojis(text):
                                u"\U00002702-\U000027B0"  # Dingbats
                                u"\U000024C2-\U0001F251" 
                                "]+", flags=re.UNICODE)
-    return ''.join(emoji_pattern.findall(text))
+    # Find all emojis in the input text using the regex pattern
+    emojis_found = emoji_pattern.findall(text)
+    
+    # Join the found emojis into a single string
+    return ''.join(emojis_found)
+
+# Example text containing emojis
+text_with_emojis = "I love Python! 😊🚀"
+
+# Apply the extract_emojis function
+extracted_emojis = extract_emojis(text_with_emojis)
+
+# Print the original text and extracted emojis
+print("Original Text:")
+print(text_with_emojis)
+print("\nExtracted Emojis:")
+print(extracted_emojis)

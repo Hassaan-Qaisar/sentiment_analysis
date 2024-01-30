@@ -8,6 +8,7 @@ from dbconnection import data
 from preprocess import preprocess
 import time
 
+
 def analyze_sentiment_batch(texts, model, tokenizer):
     preprocessed_texts = [preprocess(text) for text in texts]
     encoded_inputs = tokenizer(preprocessed_texts, return_tensors='pt', padding=True, truncation=True)
