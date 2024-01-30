@@ -20,23 +20,29 @@ Make sure to install the following dependencies before running the scripts:
 
 1. Clone the repository:
 
+
    ```bash
    git clone https://github.com/your-username/your-repo.git
   ```
 
+
 2. Install the dependencies:
+
 
   ```bash
   pip install -r requirements.txt
   ```
 
+
 3. Execute the desired script:
+
 
   ```bash
   python countText.py  # For counting positive, negative, and neutral texts
   python rb_mutiple_combined_results.py  # For cumulative probabilities of sentiment
   python rb_mutiple_individual_results.py  # For individual sentiment probabilities
   ```
+
 
 ## Code Files
 
