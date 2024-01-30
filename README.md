@@ -26,7 +26,9 @@ git clone https://github.com/your-username/your-repo.git
    
 2. Install the dependencies:
 
-  pip install -r requirements.txt
+```sh
+pip install -r requirements.txt
+```  
 
 3. Execute the desired script:
 
