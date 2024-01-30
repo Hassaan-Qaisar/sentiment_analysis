@@ -19,13 +19,11 @@ Make sure to install the following dependencies before running the scripts:
 ## How to Run
 
 1. Clone the repository:
-
-
-   ```bash
-   git clone https://github.com/your-username/your-repo.git
-  ```
-
-
+   
+```sh
+git clone https://github.com/your-username/your-repo.git
+```
+   
 2. Install the dependencies:
 
   pip install -r requirements.txt
