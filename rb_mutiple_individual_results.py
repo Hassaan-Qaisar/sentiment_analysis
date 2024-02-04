@@ -1,3 +1,4 @@
+import csv
 from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer, AutoConfig
 import numpy as np
@@ -42,6 +43,24 @@ for i, text in enumerate(texts):
         score = probabilities_batch[i, ranking[j]]
         print(f"{j+1}) {label}: {np.round(float(score), 4)}")
 
+# Specify the CSV file path
+csv_file_path = "sentiment_results_preprocess.csv"
+
+# Open the CSV file in write mode
+with open(csv_file_path, 'w', newline='', encoding='utf-8') as csvfile:
+    # Create a CSV writer
+    csv_writer = csv.writer(csvfile)
+
+    # Write header to the CSV file
+    header = ["Tweet"] + [f"{label}" for label in config.id2label.values()]
+    csv_writer.writerow(header)
+
+    # Write results for each text to the CSV file
+    for i, text in enumerate(texts):
+        row_data = [text] + [f"{prob:.4f}" for prob in probabilities_batch[i]]
+        csv_writer.writerow(row_data)
+
+print(f"Results saved to '{csv_file_path}'")
 
 end_time = time.time()
 
